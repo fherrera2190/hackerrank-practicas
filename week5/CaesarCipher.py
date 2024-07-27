@@ -1,32 +1,16 @@
 def caesarCipher(s, k):
     # Write your code here
-    if " " in s:
-        raise ValueError("Space detected")
-    if k not in range(0, 101):
-        raise ValueError("Space detected")
-    if len(s) not in range(1, 101):
-        raise ValueError("Space detected")
-    newS = ""
-    for i in range(0, len(s)):
-        if ord(s[i]) in range(65, 91):
-            letter = ord(s[i]) + k
-            if letter > 90:
-                letter = 64 + letter - 90
-                newS += chr(letter)
+    result = ""
+    for string in s:
+        if string.isalpha():
+            ascii = ord(string)
+            if string.isupper():
+                result += chr(65 + ((ascii + k - 65) % 26))
             else:
-                newS += chr(letter)
-
-        elif ord(s[i]) in range(97, 123):
-            letter = ord(s[i]) + k
-            if letter > 122:
-                letter = 96 + letter - 122
-                newS += chr(letter)
-            else:
-                newS += chr(letter)
+                result += chr(97 + ((ascii + k - 97) % 26))
         else:
-            newS += s[i]
-
-    return newS
+            result += string
+    return result
 
 
 s = "middle-Outz"
