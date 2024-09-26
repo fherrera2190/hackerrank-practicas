@@ -39,8 +39,5 @@ function processData(input) {
 
   console.log(count);
 }
-function findPrimeDates(year) {
-  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-}
 
 processData("02-08-2025 04-09-2025");
